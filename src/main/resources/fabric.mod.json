@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "citresewn",
+  "version": "${version}",
+  "name": "CIT Resewn",
+  "description": "A modern replacement for OptiFine CIT, compatible with Minecraft 1.21.7.",
+  "authors": [
+    "shsupercm",
+    "ImaNutellamello",
+    "arianastarrr"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "shcm.shsupercm.fabric.citresewn.CITResewn"
+    ]
+  },
+  "mixins": [
+    "citresewn.mixins.json"
+  ],
+  "accessWidener": "citresewn.accesswidener",
+  "depends": {
+    "fabricloader": "0.16.14",
+    "fabric": "*",
+    "minecraft": "1.21.7",
+    "fabric-api": "0.129.0+1.21.7"
+  },
+  "suggests": {
+    "modmenu": "10.0.0-pre.1+1.21",
+    "cloth-config": "19.0.147+fabric"
+  }
+}

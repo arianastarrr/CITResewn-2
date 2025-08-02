@@ -1,0 +1,34 @@
+# Query: plugin
+# ContextLines: 1
+
+7 results - 4 files
+
+build.gradle:
+  1: plugins {
+  2      id "fabric-loom" version '1.10.2'
+
+settings.gradle:
+   1: pluginManagement {
+   2      repositories {
+
+   7          maven { url = 'https://maven.fabricmc.net/' }
+   8:         gradlePluginPortal()
+   9          mavenCentral()
+
+  13  
+  14: plugins {
+  15      id 'fabric-loom' version '1.10.2' apply
+
+src/main/java/shcm/shsupercm/fabric/citresewn/config/CITResewnMixinConfiguration.java:
+   5  import org.objectweb.asm.tree.ClassNode;
+   6: import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
+   7  import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
+
+  16   */
+  17: public class CITResewnMixinConfiguration implements IMixinConfigPlugin {
+  18      private static final String MIXINS_ROOT = "shcm.shsupercm.fabric.citresewn.mixin";
+
+src/main/resources/citresewn.mixins.json:
+  4    "package": "shcm.shsupercm.fabric.citresewn.mixin",
+  5:   "plugin": "shcm.shsupercm.fabric.citresewn.config.CITResewnMixinConfiguration",
+  6    "compatibilityLevel": "JAVA_17",
