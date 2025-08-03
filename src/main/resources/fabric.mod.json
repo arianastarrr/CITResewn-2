@@ -1,9 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "citresewn",
-  "version": "${version}",
-  "name": "CIT Resewn",
-  "description": "A modern replacement for OptiFine CIT, compatible with Minecraft 1.21.7.",
+  "id": "citrewoven",
+  "version": "${mod_version}",
+  "name": "CIT Rewoven",
+  
+  "description": "A modern replacement for OptiFine CIT, updated for Minecraft 1.21.7. Brings old CIT packs back to life.",
   "authors": [
     "shsupercm",
     "ImaNutellamello",

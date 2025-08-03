@@ -9,7 +9,6 @@ import shcm.shsupercm.fabric.citresewn.cit.builtin.conditions.core.*;
 import shcm.shsupercm.fabric.citresewn.config.CITResewnConfig;
 import shcm.shsupercm.fabric.citresewn.pack.GlobalProperties;
 import shcm.shsupercm.fabric.citresewn.pack.PackParser;
-import shcm.shsupercm.fabric.citresewn.mixin.ModelLoaderMixin;
 
 import java.util.*;
 

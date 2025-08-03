@@ -2,7 +2,6 @@ package shcm.shsupercm.fabric.citresewn.mixin;
 
 import net.minecraft.client.texture.atlas.AtlasLoader;
 import net.minecraft.client.texture.atlas.AtlasSource;
-import net.minecraft.client.texture.atlas.AtlasSourceType;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceFinder;
 import net.minecraft.resource.ResourceManager;
@@ -13,6 +12,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import com.mojang.serialization.MapCodec;
+
 import shcm.shsupercm.fabric.citresewn.pack.PackParser;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class AtlasLoaderMixin {
     @Shadow @Final private List<AtlasSource> sources;
 
     @Inject(method = "of", at = @At("RETURN"), cancellable = true)
-    private static void citresewn$atlasSource(ResourceManager resourceManager, Identifier id, CallbackInfoReturnable<AtlasLoader> cir) {
+    private static void citresewn(ResourceManager resourceManager, Identifier id, CallbackInfoReturnable<AtlasLoader> cir) {
         if (id.getPath().equals("blocks") && id.getNamespace().equals("minecraft")) {
             ((AtlasLoaderMixin) (Object) cir.getReturnValue()).sources.add(new AtlasSource() {
                 @Override
@@ -36,9 +38,17 @@ public class AtlasLoaderMixin {
                 }
 
                 @Override
-                public AtlasSourceType getType() {
-                    return null;
+                public MapCodec getCodec() {
+                    // This anonymous class is not intended to be serialized/deserialized,
+                    // so you can throw an exception or return null if appropriate.
+                    // If null is not allowed, throw an exception:
+                    throw new UnsupportedOperationException("Anonymous AtlasSource does not support getCodec()");
                 }
+
+                //@Override
+                //public AtlasSource.Type getType() {
+                //    return null;
+                //}
             });
         }
     }
