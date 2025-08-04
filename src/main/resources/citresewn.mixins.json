@@ -2,8 +2,17 @@
   "required": true,
   "minVersion": "0.8",
   "package": "shcm.shsupercm.fabric.citresewn.mixin",
-  "plugin": "shcm.shsupercm.fabric.citresewn.config.CITResewnMixinConfiguration",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "CITResewn-refmap.json",
+  "mixins": [
+    "CITResewnCommand",
+    "ChatScreenMixin"
+  ],
+  "client": [
+    "pack.GlobalPropertiesMixin",
+    "pack.PackParserMixin", 
+    "cit.ActiveCITsMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

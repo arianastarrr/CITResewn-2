@@ -6,13 +6,14 @@ import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.screen.NoticeScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+
+import static shcm.shsupercm.fabric.citresewn.mixin.CITResewnCommand.openConfig;
+
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-import shcm.shsupercm.fabric.citresewn.CITResewnCommand;
-import shcm.shsupercm.fabric.citresewn.config.CITResewnConfigScreenFactory;
 
-import static shcm.shsupercm.fabric.citresewn.CITResewnCommand.openConfig;
+import shcm.shsupercm.fabric.citresewn.config.CITResewnConfigScreenFactory;
 
 /**
  * Opens the config screen when running the "/citresewn config" command.

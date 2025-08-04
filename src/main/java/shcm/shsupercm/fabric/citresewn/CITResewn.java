@@ -6,6 +6,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import shcm.shsupercm.fabric.citresewn.config.CITResewnConfig;
+import shcm.shsupercm.fabric.citresewn.mixin.CITResewnCommand;
 import shcm.shsupercm.fabric.citresewn.cit.CITRegistry;
 
 /**

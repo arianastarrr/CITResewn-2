@@ -1,6 +1,6 @@
 package shcm.shsupercm.fabric.citresewn.api;
 
-import shcm.shsupercm.fabric.citresewn.pack.format.PropertyValue;
+import shcm.shsupercm.fabric.citresewn.mixin.pack.format.PropertyValue;
 
 /**
  * @see #globalProperty(String, PropertyValue)

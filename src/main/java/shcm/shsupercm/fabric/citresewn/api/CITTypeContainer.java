@@ -1,6 +1,6 @@
 package shcm.shsupercm.fabric.citresewn.api;
 
-import shcm.shsupercm.fabric.citresewn.cit.ActiveCITs;
+import shcm.shsupercm.fabric.citresewn.cit.ActiveCITsMixin;
 import shcm.shsupercm.fabric.citresewn.cit.CIT;
 import shcm.shsupercm.fabric.citresewn.cit.CITType;
 import shcm.shsupercm.fabric.citresewn.cit.CITRegistry;
@@ -78,10 +78,10 @@ public abstract class CITTypeContainer<T extends CITType> implements CITDisposab
     /**
 	 * @see #empty
 	 * @see CITResewnConfig#enabled
-	 * @see ActiveCITs#isActive()
+	 * @see ActiveCITsMixin#isActive()
      * @return whether this container's associated type should work or not
      */
     public boolean active() {
-        return !empty && CITResewnConfig.INSTANCE.enabled && ActiveCITs.isActive();
+        return !empty && CITResewnConfig.INSTANCE.enabled && ActiveCITsMixin.isActive();
     }
 }

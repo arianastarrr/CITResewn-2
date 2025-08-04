@@ -11,6 +11,8 @@ import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceFinder;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
+import shcm.shsupercm.fabric.citresewn.mixin.pack.PackParserMixin;
+
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -19,8 +21,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.mojang.serialization.MapCodec;
-
-import shcm.shsupercm.fabric.citresewn.pack.PackParser;
 
 import java.util.List;
 import java.util.Map;
@@ -35,7 +35,7 @@ public class AtlasLoaderMixin {
             ((AtlasLoaderMixin) (Object) cir.getReturnValue()).sources.add(new AtlasSource() {
                 @Override
                 public void load(ResourceManager resourceManager, AtlasSource.SpriteRegions regions) {
-                    for (String root : PackParser.ROOTS) {
+                    for (String root : PackParserMixin.ROOTS) {
                         ResourceFinder resourceFinder = new ResourceFinder(root + "/cit", ".png");
                         for (Map.Entry<Identifier, Resource> entry : resourceFinder.findResources(resourceManager).entrySet())
                             regions.add(resourceFinder.toResourceId(entry.getKey()).withPrefixedPath(root + "/cit/"), entry.getValue());
