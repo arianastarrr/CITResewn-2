@@ -18,13 +18,6 @@ public class CITResewnMixinConfiguration implements IMixinConfigPlugin {
     private static final String MIXINS_ROOT = "shcm.shsupercm.fabric.citresewn.mixin";
 
     /**
-     * Is Broken Paths enabled in config.
-     * @see BrokenPaths
-     * @see CITResewnConfig#broken_paths
-     */
-    private boolean broken_paths;
-
-    /**
      * Slightly modified mod ids for loaded mods and mods with compat mixins.
      */
     private final Set<String> mods = new HashSet<>(), compatMods = new HashSet<>();
@@ -32,8 +25,6 @@ public class CITResewnMixinConfiguration implements IMixinConfigPlugin {
     @Override
     public void onLoad(String mixinPackage) {
         CITResewnConfig launchConfig = CITResewnConfig.read();
-
-        this.broken_paths = launchConfig.broken_paths;
 
         for (ModContainer mod : FabricLoader.getInstance().getAllMods())
             mods.add(mod.getMetadata().getId().replace('-', '_'));
@@ -44,9 +35,6 @@ public class CITResewnMixinConfiguration implements IMixinConfigPlugin {
         if (!mixinClassName.startsWith(MIXINS_ROOT))
             return false;
         mixinClassName = mixinClassName.substring(MIXINS_ROOT.length() + 1);
-
-        if (mixinClassName.startsWith("broken_paths"))
-            return broken_paths;
 
         if (mixinClassName.startsWith("compat.")) {
             mixinClassName = mixinClassName.substring(7);
@@ -62,7 +50,6 @@ public class CITResewnMixinConfiguration implements IMixinConfigPlugin {
 
         return true;
     }
-
 
     @Override
     public String getRefMapperConfig() { return null; }

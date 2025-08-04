@@ -2,14 +2,11 @@ package shcm.shsupercm.fabric.citresewn.cit;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.LivingEntityEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.client.util;
-import net.minecraft;
-import net.minecraft.util;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
@@ -55,14 +52,8 @@ public class CITContext {
     public Map<Identifier, Integer> enchantments() {
         if (this.enchantments == null) {
             this.enchantments = new LinkedHashMap<>();
-            /*? <1.21 {*/
-            /*for (NbtElement nbtElement : stack.isOf(Items.ENCHANTED_BOOK) ? EnchantedBookItem.getEnchantmentNbt(stack) : stack.getEnchantments())
-                this.enchantments.put(EnchantmentHelper.getIdFromNbt((NbtCompound) nbtElement), EnchantmentHelper.getLevelFromNbt((NbtCompound) nbtElement));
-            *//*?} else {*/
             for (Map.Entry<RegistryEntry<Enchantment>, Integer> entry : EnchantmentHelper.getEnchantments(stack).getEnchantmentEntries())
                 this.enchantments.put(entry.getKey().getKey().map(RegistryKey::getValue).orElseGet(() -> Identifier.of("unregistered")), entry.getValue());
-            /*?}*/
-
         }
         return this.enchantments;
     }

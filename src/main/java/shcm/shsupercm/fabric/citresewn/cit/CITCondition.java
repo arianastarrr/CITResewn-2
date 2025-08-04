@@ -3,9 +3,9 @@ package shcm.shsupercm.fabric.citresewn.cit;
 import shcm.shsupercm.fabric.citresewn.CITResewn;
 import shcm.shsupercm.fabric.citresewn.api.CITConditionContainer;
 import shcm.shsupercm.fabric.citresewn.config.CITResewnConfig;
-import shcm.shsupercm.fabric.citresewn.mixin.pack.format.PropertyGroup;
-import shcm.shsupercm.fabric.citresewn.mixin.pack.format.PropertyKey;
-import shcm.shsupercm.fabric.citresewn.mixin.pack.format.PropertyValue;
+import shcm.shsupercm.fabric.citresewn.pack.format.PropertyGroup;
+import shcm.shsupercm.fabric.citresewn.pack.format.PropertyKey;
+import shcm.shsupercm.fabric.citresewn.pack.format.PropertyValue;
 
 import java.util.Collections;
 import java.util.Set;

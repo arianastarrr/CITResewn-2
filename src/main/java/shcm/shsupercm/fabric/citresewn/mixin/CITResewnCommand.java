@@ -14,8 +14,8 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.text.Text;
 import shcm.shsupercm.fabric.citresewn.cit.*;
 import shcm.shsupercm.fabric.citresewn.config.CITResewnConfig;
-import shcm.shsupercm.fabric.citresewn.mixin.pack.format.PropertyKey;
-import shcm.shsupercm.fabric.citresewn.mixin.pack.format.PropertyValue;
+import shcm.shsupercm.fabric.citresewn.pack.format.PropertyKey;
+import shcm.shsupercm.fabric.citresewn.pack.format.PropertyValue;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -50,10 +50,10 @@ public class CITResewnCommand {
                     context.getSource().sendFeedback(of("CIT Resewn v" + FabricLoader.getInstance().getModContainer("citresewn").orElseThrow().getMetadata().getVersion() + ":"));
                     context.getSource().sendFeedback(of("  Registered: " + CITRegistry.TYPES.values().stream().distinct().count() + " types and " + CITRegistry.CONDITIONS.values().stream().distinct().count() + " conditions"));
 
-                    final boolean active = CITResewnConfig.INSTANCE.enabled && ActiveCITsMixin.isActive();
+                    final boolean active = CITResewnConfig.INSTANCE.enabled && ActiveCITs.isActive();
                     context.getSource().sendFeedback(of("  Active: " + (active ? "yes" : ("no, " + (CITResewnConfig.INSTANCE.enabled ? "no cit packs loaded" : "disabled in config")))));
                     if (active) {
-                        context.getSource().sendFeedback(of("   Loaded: " + ActiveCITsMixin.getActive().cits.values().stream().mapToLong(Collection::size).sum() + " CITs from " + ActiveCITsMixin.getActive().cits.values().stream().flatMap(Collection::stream).map(cit -> cit.packName).distinct().count() + " resourcepacks"));
+                        context.getSource().sendFeedback(of("   Loaded: " + ActiveCITs.getActive().cits.values().stream().mapToLong(Collection::size).sum() + " CITs from " + ActiveCITs.getActive().cits.values().stream().flatMap(Collection::stream).map(cit -> cit.packName).distinct().count() + " resourcepacks"));
                     }
                     context.getSource().sendFeedback(of(""));
 
@@ -70,12 +70,12 @@ public class CITResewnCommand {
                                 .then(argument("pack", new LoadedCITPackArgument())
                                         .executes(context -> { //citresewn analyze <pack>
                                             final String pack = context.getArgument("pack", String.class);
-                                            if (ActiveCITsMixin.isActive()) {
+                                            if (ActiveCITs.isActive()) {
                                                 context.getSource().sendFeedback(of("Analyzed CIT data of \"" + pack + "\u00a7r\":"));
 
                                                 List<Text> builder = new ArrayList<>();
 
-                                                for (Map.Entry<PropertyKey, Set<PropertyValue>> entry : ActiveCITsMixin.getActive().globalProperties.properties.entrySet())
+                                                for (Map.Entry<PropertyKey, Set<PropertyValue>> entry : ActiveCITs.getActive().globalProperties.properties.entrySet())
                                                     for (PropertyValue value : entry.getValue())
                                                         if (value.packName().equals(pack))
                                                             builder.add(of("  " + entry.getKey().toString() + (value.keyMetadata() == null ? "" : "." + value.keyMetadata()) + " = " + value.value()));
@@ -87,7 +87,7 @@ public class CITResewnCommand {
                                                     builder.clear();
                                                 }
 
-                                                for (Map.Entry<Class<? extends CITType>, List<CIT<?>>> entry : ActiveCITsMixin.getActive().cits.entrySet())
+                                                for (Map.Entry<Class<? extends CITType>, List<CIT<?>>> entry : ActiveCITs.getActive().cits.entrySet())
                                                     if (!entry.getValue().isEmpty()) {
                                                         long count = entry.getValue().stream().filter(cit -> cit.packName.equals(pack)).count();
                                                         if (count > 0)
@@ -101,7 +101,7 @@ public class CITResewnCommand {
                                                     builder.clear();
                                                 }
 
-                                                List<CITCondition> conditions = ActiveCITsMixin.getActive().cits.values().stream()
+                                                List<CITCondition> conditions = ActiveCITs.getActive().cits.values().stream()
                                                         .flatMap(Collection::stream)
                                                         .filter(cit -> cit.packName.equals(pack))
                                                         .flatMap(cit -> Arrays.stream(cit.conditions))
@@ -121,7 +121,7 @@ public class CITResewnCommand {
     }
 
     /**
-     * Greedy string argument that is limited to cit pack names loaded in {@link shcm.shsupercm.fabric.citresewn.cit.ActiveCITsMixin}.
+     * Greedy string argument that is limited to cit pack names loaded in {@link shcm.shsupercm.fabric.citresewn.cit.ActiveCITs}.
      */
     private static class LoadedCITPackArgument implements ArgumentType<String> {
         @Override
@@ -151,8 +151,8 @@ public class CITResewnCommand {
         }
 
         private static Set<String> getPacks() {
-            if (ActiveCITsMixin.isActive())
-                return ActiveCITsMixin.getActive().cits.values().stream()
+            if (ActiveCITs.isActive())
+                return ActiveCITs.getActive().cits.values().stream()
                         .flatMap(Collection::stream)
                         .map(cit -> cit.packName)
                         .collect(Collectors.toSet());

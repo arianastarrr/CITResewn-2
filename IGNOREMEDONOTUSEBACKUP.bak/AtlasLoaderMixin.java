@@ -11,7 +11,7 @@ import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceFinder;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
-import shcm.shsupercm.fabric.citresewn.pack.format.PackParserMixin;
+import shcm.shsupercm.fabric.citresewn.mixin.pack.PackParserMixin;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

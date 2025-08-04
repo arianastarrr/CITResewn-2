@@ -5,11 +5,11 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
 import shcm.shsupercm.fabric.citresewn.api.CITConditionContainer;
 import shcm.shsupercm.fabric.citresewn.api.CITTypeContainer;
-import shcm.shsupercm.fabric.citresewn.cit.builtin.conditions.ConstantCondition;
-import shcm.shsupercm.fabric.citresewn.mixin.pack.PackParserMixin;
-import shcm.shsupercm.fabric.citresewn.mixin.pack.format.PropertyGroup;
-import shcm.shsupercm.fabric.citresewn.mixin.pack.format.PropertyKey;
-import shcm.shsupercm.fabric.citresewn.mixin.pack.format.PropertyValue;
+// import shcm.shsupercm.fabric.citresewn.cit.builtin.conditions.ConstantCondition;
+import shcm.shsupercm.fabric.citresewn.pack.format.PropertyGroup;
+import shcm.shsupercm.fabric.citresewn.pack.format.PropertyKey;
+import shcm.shsupercm.fabric.citresewn.pack.format.PropertyValue;
+import shcm.shsupercm.fabric.citresewn.pack.format.PackParserMixin;
 
 import java.util.*;
 

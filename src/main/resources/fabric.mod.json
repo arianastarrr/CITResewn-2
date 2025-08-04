@@ -1,36 +1,25 @@
 {
   "schemaVersion": 1,
-  "id": "citresewn",
-  "version": "${version}",
-  "name": "CIT Resewn",
-  "description": "Fabric implementation of mcpatcher's CIT",
-  "authors": ["SHsuperCM"],
-  "contact": {
-    "homepage": "https://citresewn.shcm.io",
-    "sources": "https://github.com/SHsuperCM/CITResewn"
-  },
-  "license": "LGPL-3.0",
-  "icon": "assets/citresewn/icon.png",
+  "id": "citrewoven",
+  "version": "${mod_version}",
+  "name": "CIT Rewoven",
+  "description": "A modern replacement for OptiFine CIT, updated for Minecraft 1.21.7.",
+  "authors": ["shsupercm", "ImaNutellamello", "arianastarrr"],
+  "license": "MIT",
   "environment": "client",
   "entrypoints": {
     "client": [
-      "shcm.shsupercm.fabric.citresewn.CITResewn",
-      "shcm.shsupercm.fabric.citresewn.defaults.CITResewnDefaults"
-    ],
-    "fabric-datagen": [
-      "shcm.shsupercm.fabric.citresewn.CITResewnDataGenerator"
+      "shcm.shsupercm.fabric.citresewn.CITResewn"
     ]
   },
   "mixins": [
-    "citresewn.mixins.json",
-    "citresewn-defaults.mixins.json"
+    "citresewn.mixins.json"
   ],
+  "accessWidener": "citresewn.accesswidener",
   "depends": {
-    "fabricloader": ">=0.11.3",
+    "fabricloader": "0.16.14",
     "fabric": "*",
-    "minecraft": ">=1.21"
-  },
-  "suggests": {
-    "cloth-config2": ">=6.0.45"
+    "minecraft": "1.21.7",
+    "fabric-api": "0.129.0+1.21.7"
   }
 }
