@@ -2,11 +2,14 @@ package shcm.shsupercm.fabric.citresewn.cit;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.LivingEntityEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.client.util;
+import net.minecraft;
+import net.minecraft.util;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 

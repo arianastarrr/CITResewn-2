@@ -1,6 +1,11 @@
 package shcm.shsupercm.fabric.citresewn.mixin;
 
+//import net.minecraft.client.texture.atlas.Atlases;
 import net.minecraft.client.texture.atlas.AtlasLoader;
+//import net.minecraft.client.render;
+//import net.minecraft.client.render.texture.atlas;
+//import net.minecraft.client.render.texture.atlas.sources;
+//import net.minecraft.client.model.AtlasIds;
 import net.minecraft.client.texture.atlas.AtlasSource;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceFinder;
