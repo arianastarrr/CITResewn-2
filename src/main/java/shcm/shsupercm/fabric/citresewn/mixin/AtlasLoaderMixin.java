@@ -25,11 +25,11 @@ public class AtlasLoaderMixin {
     @Shadow @Final private List<AtlasSource> sources;
 
     @Inject(method = "of", at = @At("RETURN"), cancellable = true)
-    private static void citresewn(ResourceManager resourceManager, Identifier id, CallbackInfoReturnable<AtlasLoader> cir) {
+    private static void citresewn$atlasSource(ResourceManager resourceManager, Identifier id, CallbackInfoReturnable<AtlasLoader> cir) {
         if (id.getPath().equals("blocks") && id.getNamespace().equals("minecraft")) {
             ((AtlasLoaderMixin) (Object) cir.getReturnValue()).sources.add(new AtlasSource() {
                 @Override
-                public void load(ResourceManager resourceManager, SpriteRegions regions) {
+                public void load(ResourceManager resourceManager, AtlasSource.SpriteRegions regions) {
                     for (String root : PackParser.ROOTS) {
                         ResourceFinder resourceFinder = new ResourceFinder(root + "/cit", ".png");
                         for (Map.Entry<Identifier, Resource> entry : resourceFinder.findResources(resourceManager).entrySet())
@@ -38,17 +38,9 @@ public class AtlasLoaderMixin {
                 }
 
                 @Override
-                public MapCodec getCodec() {
-                    // This anonymous class is not intended to be serialized/deserialized,
-                    // so you can throw an exception or return null if appropriate.
-                    // If null is not allowed, throw an exception:
-                    throw new UnsupportedOperationException("Anonymous AtlasSource does not support getCodec()");
+                public MapCodec<? extends AtlasSource> getCodec() {
+                    throw new UnsupportedOperationException("CIT AtlasSource is not serializable");
                 }
-
-                //@Override
-                //public AtlasSource.Type getType() {
-                //    return null;
-                //}
             });
         }
     }
